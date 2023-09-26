@@ -1,0 +1,92 @@
+@import '../../../public/publishing/assets/fonts/pretendard/pretendard.css';
+@import '../../../public/publishing/assets/fonts/satoshi/css/satoshi.css';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body,
+input,
+textarea,
+select,
+option,
+button {
+  font-family: Pretendard, sans-serif;
+  font-style: normal;
+  color: #201e33;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+button {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+
+  &.primary {
+    min-height: 40px;
+    padding: 0 14px;
+    color: #fff;
+    background-color: #394add;
+  }
+}
+
+:root {
+  --q-pgreen: #9de735;
+  --q-pblue: #394add;
+  --qpink: #ea4289;
+  --qgreen2: #bcff5e;
+  --qblack: #201e33;
+  --qblack2: #56545c;
+  --deepgrey: #7a7986;
+  --grey: #8b8e9b;
+  --qtxtgreen: #19cc81;
+  --softgrey: #ddd;
+  --skyblue: #82b4ff;
+  --violet: #8465ff;
+  --cyon: #00e7d9;
+  --qblue: #3d51fe;
+  --red: #ec1522;
+  --orange: #ff6b00;
+  --yellow: #ffa800;
+  --white: #fff;
+  --b-ggrey: #eceef2;
+  --boxgrey: #f8f9fb;
+  --qp-bgrey: #b1b2b9;
+  --qp-bblue: #3d32aa;
+  --p-blue-20: #c9c8ee;
+  --qblue-10: #eceeff;
+  --qgreen: #9feb36;
+  --black: #000;
+  --gray-ef: #efefef;
+  --blue-01: #4c7bf4;
+  --gray-77: #777;
+  --neutral-gray-50: #fcfdfe;
+  --neutral-gray-neutral-gray-150: #eff1f3;
+  --neutral-gray-neutral-gray-600: #566875;
+  --neutral-gray-400: #8f9da8;
+  --grey-d9: #d9d9d9;
+  --stable: #44d18d;
+  --seek-stable: #48bbfb;
+  --neutral: #f1c114;
+  --invest: #f96a3d;
+  --agressive-invest: #f53b52;
+  --red-10: #ffe9ea;
+  --blue-02: #8591ff;
+}
+
+// 기본 화면 레이아웃
+@import 'default-layout';
+
+// 폰트
+@import 'typography.scss';
