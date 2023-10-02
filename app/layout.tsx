@@ -1,12 +1,15 @@
 import {PropsWithChildren} from 'react';
 import StyledJsxRegistry from './registry';
+import Head from 'next/head';
 import 'assets/styles/reset.scss';
-import Link from 'next/link';
 
 export default function RootLayout({children}: PropsWithChildren) {
   return (
     <html lang="ko">
-      <Link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+      <Head>
+        <title>good</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>

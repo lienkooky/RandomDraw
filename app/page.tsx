@@ -1,5 +1,13 @@
+import Footer from '@/components/footer/Footer';
+import Header from '@/components/header/Header';
 import Main from '@/components/main/main';
 
 export default function Home() {
-  return <Main />;
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 }
