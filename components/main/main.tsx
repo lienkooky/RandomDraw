@@ -38,14 +38,8 @@ function Main() {
             <div className="card__img--hover"></div>
           </Link>
           <div className="card__info">
-            <span className="card__category">Recipe</span>
-            <h3 className="card__title">Crisp Spanish tortilla Matzo brei</h3>
-            <span className="card__by">
-              by{' '}
-              <a href="#" className="card__author" title="author">
-                Celeste Mills
-              </a>
-            </span>
+            <span className="card__category">prayers</span>
+            <h3 className="card__title">중보기도 뽑기</h3>
           </div>
         </article>
 
