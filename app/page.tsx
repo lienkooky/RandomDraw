@@ -1,13 +1,7 @@
-import Footer from '@/components/footer/Footer';
-import Header from '@/components/header/Header';
-import Main from '@/components/main/Main';
+import Home from '@/components/tasks/home/Home';
 
-export default function Home() {
-  return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
-  );
+function DefaultPage() {
+  return <Home />;
 }
+
+export default DefaultPage;
