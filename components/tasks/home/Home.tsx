@@ -2,8 +2,8 @@
 
 import React from 'react';
 import css from 'styled-jsx/css';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
+import Header from 'components/layouts/Header';
+import Footer from 'components/layouts/Footer';
 
 const style = css`
   main {

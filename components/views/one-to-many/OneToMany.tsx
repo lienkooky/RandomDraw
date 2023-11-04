@@ -1,8 +1,8 @@
 'use client';
 
 import {useState, ChangeEvent, MouseEvent} from 'react';
-import {defaultName} from '@/components/types/mockup';
-import {getUniqueKey} from '@/components/utils/StringUtils';
+import {defaultName} from 'components/types/mockup';
+import {getUniqueKey} from 'components/utils/StringUtils';
 
 interface IProps {
   onBack(): void;

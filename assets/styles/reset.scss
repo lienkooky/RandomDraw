@@ -193,12 +193,15 @@ body {
   height: 100%;
 }
 body {
-  background: #fff;
+  background: #ffffff;
   word-break: keep-all;
   line-height: 1.5;
-  font-family: Pretendard;
-  /*-apple-system, BlinkMacSystemFont, Open Sans, Helvetica Neue, sans-serif*/
-  font-style: normal;
-  font-weight: 400;
+  @font-face {
+    font-family: 'JalnanGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   color: #201e33;
 }

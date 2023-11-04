@@ -1,10 +1,10 @@
 'use client';
 
 import React, {useState} from 'react';
-import Header from '@/components/layouts/Header';
-import Footer from '@/components/layouts/Footer';
-import OneToMany from '@/components/views/one-to-many/OneToMany';
-import Result from '@/components/views/one-to-many/Result';
+import Header from 'components/layouts/Header';
+import Footer from 'components/layouts/Footer';
+import OneToMany from 'components/views/one-to-many/OneToMany';
+import Result from 'components/views/one-to-many/Result';
 
 function OneToManyTask() {
   const [step, setStep] = useState(0); //* next step or prev step

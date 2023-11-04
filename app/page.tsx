@@ -1,7 +1,7 @@
-import Home from '@/components/tasks/home/Home';
+import Home from 'components/tasks/home/Home';
 
-function DefaultPage() {
+function Page() {
   return <Home />;
 }
 
-export default DefaultPage;
+export default Page;
