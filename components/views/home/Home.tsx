@@ -8,7 +8,6 @@ import Footer from 'components/layouts/Footer';
 const style = css`
   main {
     flex: 1;
-    // height: 100%;
     height: calc(100% - 48px);
   }
 `;

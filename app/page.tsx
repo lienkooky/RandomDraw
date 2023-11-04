@@ -1,4 +1,4 @@
-import Home from 'components/tasks/home/Home';
+import Home from 'components/views/home/Home';
 
 function Page() {
   return <Home />;
