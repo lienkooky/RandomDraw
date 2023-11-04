@@ -3,11 +3,9 @@
 import {useState, ChangeEvent, MouseEvent} from 'react';
 import {defaultName} from '@/components/types/mockup';
 import {getUniqueKey} from '@/components/utils/StringUtils';
-interface ICount {
-  [key: string]: number;
-}
+
 interface IProps {
-  onConfirm(data: string[], nameCount: ICount): void;
+  onConfirm(data: string[], first: string[], second: string[]): void;
 }
 
 function NMmatch({onConfirm}: IProps) {
@@ -46,14 +44,34 @@ function NMmatch({onConfirm}: IProps) {
       return;
     }
 
-    const nameCount: ICount = {};
-    selectUser.forEach((name) => {
-      if (!nameCount[name]) {
-        nameCount[name] = 2;
-      }
-    });
+    const firstArr: string[] = [];
+    const secondArr: string[] = [];
 
-    onConfirm(selectUser, nameCount);
+    while (selectUser.length !== firstArr.length) {
+      const randomIndex = Math.floor(Math.random() * selectUser.length);
+      const findData = firstArr.find((user) => user === selectUser[randomIndex]);
+
+      if (!findData) {
+        firstArr.push(selectUser[randomIndex]);
+      }
+    }
+
+    let i = 0;
+    while (selectUser.length !== secondArr.length) {
+      const randomIndex = Math.floor(Math.random() * selectUser.length);
+      const findData = secondArr.find((user) => user === selectUser[randomIndex]);
+
+      if (!findData) {
+        if (firstArr[i] !== selectUser[randomIndex]) {
+          secondArr.push(selectUser[randomIndex]);
+          i++;
+        }
+      }
+    }
+    console.log('firstArr', firstArr);
+    console.log('secondArr', secondArr);
+
+    onConfirm(selectUser, firstArr, secondArr);
   };
 
   return (

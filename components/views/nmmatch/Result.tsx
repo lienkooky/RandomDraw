@@ -1,36 +1,41 @@
 'use client';
 
-import React, {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 interface IProps {
-  data: string[];
-  count: ICount;
+  userList: string[];
+  firstArr: string[];
+  secondArr: string[];
   onConfirm(): void;
 }
 
-interface ICount {
-  [key: string]: number;
-}
-
-function Result({data, count, onConfirm}: IProps) {
-  const test: ICount = {
-    김유정: 2,
-    손건영: 2,
-    윤여진: 2,
-    이해원: 2,
-    임정혁: 2
-  };
+function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
+  const [resultList, setResultList] = useState([]);
 
   useEffect(() => {
-    for (const key in test) {
-      console.log('key', key);
-      console.log('key', test[key]);
+    const resultArr: any = [];
+    const shuffledList = [...userList];
+    let j = 0;
+
+    while (j < userList.length) {
+      const findData = shuffledList.find((user: string) => {
+        return user !== firstArr[j] && user !== secondArr[j];
+      });
+      if (findData) {
+        const obj: any = {};
+        const findIndex = shuffledList.indexOf(findData);
+        obj[findData] = [firstArr[j], secondArr[j]];
+        resultArr.push(obj);
+        shuffledList.splice(findIndex, 1);
+        j++;
+      }
     }
-  }, []);
+  }, [userList]);
 
   const onClickConfirm = (): void => {
     onConfirm();
   };
+
   return (
     <section>
       <button onClick={onClickConfirm}>다시하기</button>
@@ -39,3 +44,36 @@ function Result({data, count, onConfirm}: IProps) {
 }
 
 export default Result;
+
+/*
+const firstArr: string[] = [];
+    const secondArr: string[] = [];
+    const resultArr: string[] = [];
+
+    const predecessor = async (): Promise<string> => {
+      while (userList.length !== firstArr.length) {
+        const randomIndex = Math.floor(Math.random() * userList.length);
+        const findData = firstArr.find((user) => user === userList[randomIndex]);
+
+        if (!findData) {
+          firstArr.push(userList[randomIndex]);
+        }
+      }
+
+      let i = 0;
+      while (userList.length !== secondArr.length) {
+        const randomIndex = Math.floor(Math.random() * userList.length);
+        const findData = secondArr.find((user) => user === userList[randomIndex]);
+
+        if (!findData) {
+          if (firstArr[i] !== userList[randomIndex]) {
+            secondArr.push(userList[randomIndex]);
+            i++;
+          }
+        }
+      }
+      console.log('firstArr', firstArr);
+      console.log('secondArr', secondArr);
+      return 'ok';
+    };
+*/
