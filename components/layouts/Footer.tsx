@@ -4,20 +4,21 @@ import React from 'react';
 import css from 'styled-jsx/css';
 
 const style = css`
-  header {
-    font-size: 50px;
-    font-weight: bold;
+  footer {
+    font-size: large;
     border: 1px solid red;
+    position: absolute;
+    bottom: 0;
   }
 `;
 
-function Header() {
+function Footer() {
   return (
     <>
-      <header>Yeong's</header>
+      <footer>2023. Designed By yeong.</footer>
       <style jsx>{style}</style>
     </>
   );
 }
 
-export default Header;
+export default Footer;

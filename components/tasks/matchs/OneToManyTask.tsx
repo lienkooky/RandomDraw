@@ -1,18 +1,18 @@
 'use client';
 
 import React, {useState} from 'react';
-import Header from '@/components/common/header/Header';
-import Footer from '@/components/common/footer/Footer';
-import NMmatch from '@/components/views/nmmatch/NMmatch';
-import Result from '@/components/views/nmmatch/Result';
+import Header from '@/components/layouts/Header';
+import Footer from '@/components/layouts/Footer';
+import OneToMany from '@/components/views/one-to-many/OneToMany';
+import Result from '@/components/views/one-to-many/Result';
 
-function NMmatchTask() {
+function OneToManyTask() {
   const [step, setStep] = useState(0); //* next step or prev step
   const [userList, setUserList] = useState<string[]>([]); //* selected users
   const [firstArr, setFirstArr] = useState<string[]>([]); //* random firstArr
   const [secondArr, setSecondArr] = useState<string[]>([]); //* random secondArr
 
-  const onConfirmNMmatch = (selectUser: string[], first: string[], second: string[]): void => {
+  const onConfirmOneToMany = (selectUser: string[], first: string[], second: string[]): void => {
     setUserList(selectUser);
     setFirstArr(first);
     setSecondArr(second);
@@ -26,7 +26,7 @@ function NMmatchTask() {
   return (
     <>
       <Header />
-      {step === 0 && <NMmatch onConfirm={onConfirmNMmatch} />}
+      {step === 0 && <OneToMany onConfirm={onConfirmOneToMany} onBack={() => {}} />}
       {step === 1 && (
         <Result userList={userList} firstArr={firstArr} secondArr={secondArr} onConfirm={onComfirmResult} />
       )}
@@ -35,4 +35,4 @@ function NMmatchTask() {
   );
 }
 
-export default NMmatchTask;
+export default OneToManyTask;

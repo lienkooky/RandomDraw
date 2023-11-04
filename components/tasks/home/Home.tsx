@@ -1,16 +1,29 @@
 'use client';
 
 import React from 'react';
-import Header from '@/components/common/header/Header';
-import Main from '@/components/common/main/Main';
-import Footer from '@/components/common/footer/Footer';
+import css from 'styled-jsx/css';
+import Header from '@/components/layouts/Header';
+import Footer from '@/components/layouts/Footer';
+
+const style = css`
+  main {
+    flex: 1;
+    // height: 100%;
+    height: calc(100% - 48px);
+  }
+`;
 
 function Home() {
   return (
     <>
       <Header />
-      <Main />
+      <main>
+        <div>
+          good<button onClick={() => {}}>click me!</button>
+        </div>
+      </main>
       <Footer />
+      <style jsx>{style}</style>
     </>
   );
 }

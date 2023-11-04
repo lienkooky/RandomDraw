@@ -2,6 +2,11 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 html,
 body,
@@ -87,6 +92,13 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -122,4 +134,71 @@ table {
   border-spacing: 0;
 }
 
-@import 'index.scss';
+/* developer settings */
+html {
+  -webkit-overflow-scrollng: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: none;
+  font-size: 15px;
+  --q-pgreen: #9de735;
+  --q-pblue: #394add;
+  --qpink: #ea4289;
+  --qgreen2: #bcff5e;
+  --qblack: #201e33;
+  --qblack2: #56545c;
+  --deepgrey: #7a7986;
+  --grey: #8b8e9b;
+  --qtxtgreen: #19cc81;
+  --softgrey: #ddd;
+  --skyblue: #82b4ff;
+  --violet: #8465ff;
+  --cyon: #00e7d9;
+  --qblue: #3d51fe;
+  --red: #ec1522;
+  --orange: #ff6b00;
+  --yellow: #ffa800;
+  --white: #fff;
+  --b-ggrey: #eceef2;
+  --boxgrey: #f8f9fb;
+  --qp-bgrey: #b1b2b9;
+  --qp-bblue: #3d32aa;
+  --p-blue-20: #c9c8ee;
+  --qblue-10: #eceeff;
+  --qgreen: #9feb36;
+  --black: #000;
+  --gray-ef: #efefef;
+  --blue-01: #4c7bf4;
+  --gray-77: #777;
+  --neutral-gray-50: #fcfdfe;
+  --neutral-gray-neutral-gray-150: #eff1f3;
+  --neutral-gray-neutral-gray-600: #566875;
+  --neutral-gray-400: #8f9da8;
+  --grey-d9: #d9d9d9;
+  --stable: #44d18d;
+  --seek-stable: #48bbfb;
+  --neutral: #f1c114;
+  --invest: #f96a3d;
+  --agressive-invest: #f53b52;
+  --ver-gradient-grey: linear-gradient(0deg, rgba(236, 238, 242, 1) 0%, rgba(236, 238, 242, 0) 100%);
+  --ver-gradient-white: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  --red-10: #ffe9ea;
+  --blue-02: #8591ff;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background: #fff;
+  word-break: keep-all;
+  line-height: 1.5;
+  font-family: Pretendard;
+  /*-apple-system, BlinkMacSystemFont, Open Sans, Helvetica Neue, sans-serif*/
+  font-style: normal;
+  font-weight: 400;
+  color: #201e33;
+}

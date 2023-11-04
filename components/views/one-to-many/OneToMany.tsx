@@ -5,10 +5,11 @@ import {defaultName} from '@/components/types/mockup';
 import {getUniqueKey} from '@/components/utils/StringUtils';
 
 interface IProps {
+  onBack(): void;
   onConfirm(data: string[], first: string[], second: string[]): void;
 }
 
-function NMmatch({onConfirm}: IProps) {
+function OneToMany({onBack, onConfirm}: IProps) {
   const [defaultUser, setDefaultUser] = useState<string[]>(defaultName); // * All User
   const [addUser, setAddUser] = useState<string>(''); // * add User
   const [selectUser, setSelectUser] = useState<string[]>([]); // * selected User
@@ -110,9 +111,10 @@ function NMmatch({onConfirm}: IProps) {
       </div>
       <section>
         <button onClick={onClickConfirm}>결과보기</button>
+        <button onClick={() => onBack()}>뒤로가기</button>
       </section>
     </>
   );
 }
 
-export default NMmatch;
+export default OneToMany;
