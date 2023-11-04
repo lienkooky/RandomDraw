@@ -135,6 +135,12 @@ table {
 }
 
 /* developer settings */
+@font-face {
+  font-family: 'JalnanGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 html {
   -webkit-overflow-scrollng: touch;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -142,7 +148,6 @@ html {
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: 100%;
   text-size-adjust: none;
-  font-size: 2rem;
   --q-pgreen: #9de735;
   --q-pblue: #394add;
   --qpink: #ea4289;
@@ -193,15 +198,8 @@ body {
   height: 100%;
 }
 body {
-  background: #ffffff;
-  word-break: keep-all;
-  line-height: 1.5;
-  @font-face {
-    font-family: 'JalnanGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-
+  font-family: 'JalnanGothic';
+  font-size: 40px;
   color: #201e33;
+  background-color: #ffffff;
 }

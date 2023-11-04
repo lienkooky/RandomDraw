@@ -9,28 +9,36 @@ const style = css`
   header {
     display: flex;
     align-items: center;
-    z-index: 1;
-    position: fixed;
+    padding: 30px;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
     left: 0;
     right: 0;
-    top: 0;
-    border: 1px solid red;
+    z-index: 1;
+    background-color: #ffffff;
   }
-  .logo-header {
-    padding: 20px;
+  header ::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    opacity: 0.1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0, #000 100%);
+    height: 7px;
   }
 `;
 
 function Header(): ReactElement {
   return (
     <header>
-      <div className="logo-header">
+      <div style={{flex: 1}}>
         <Image src={RamdomDraw} alt="logo" />
       </div>
-      <div>
-        <span>1:N</span>
-        <span>about</span>
-        <span>more</span>
+      <div style={{flex: 4}}>
+        <span style={{cursor: 'pointer', margin: '0 30px'}}>Home</span>
+        <span style={{cursor: 'pointer', margin: '0 30px'}}>1:N</span>
       </div>
       <style jsx>{style}</style>
     </header>
