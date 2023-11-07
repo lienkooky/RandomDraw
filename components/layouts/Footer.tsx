@@ -5,10 +5,9 @@ import css from 'styled-jsx/css';
 
 const style = css`
   footer {
-    font-size: large;
-    border: 1px solid red;
     position: absolute;
     bottom: 0;
+    font-size: large;
   }
 `;
 

@@ -1,62 +1,47 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import Slider from 'react-slick';
 import css from 'styled-jsx/css';
-import onToManyBackImage from 'assets/images/oneToManyBack.png';
-import onToManyFrontImage from 'assets/images/oneToManyFront.png';
+import {useRouter} from 'next/navigation';
 import Header from 'components/layouts/Header';
 import Footer from 'components/layouts/Footer';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 const style = css`
-  h1 {
-    background-color: #f9f9f9;
+  .first-section {
+    box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 100px;
-    padding: 100px 30px 0px 30px;
-  }
-  .first-article {
-    background-color: #f9f9f9;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 100px 30px 0px 30px;
-    height: 700px;
+    padding: 0 30px;
+    height: 1000px;
+    > h1 {
+      font-size: 100px;
+    }
+    > p {
+      margin-top: 100px;
+    }
+    > button {
+      margin-top: 100px;
+      padding: 50px;
+      font-size: 80px;
+    }
   }
 `;
 
 function Home() {
-  const settings = {
-    arrows: false,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+  const router = useRouter();
+
   return (
     <>
       <Header />
-      <main>
+      <section className="first-section">
         <h1>Random Draw</h1>
-        <article className="first-article">
-          <div style={{whiteSpace: 'pre-line', width: '50%', height: 'auto', backgroundColor: 'red'}}>
-            <strong style={{color: 'black', fontSize: 50}}>If</strong> you want to draw randomly, {'\n'} press the start
-            button.
-          </div>
-          <div style={{width: '30%', height: 'auto'}}>
-            <Slider {...settings}>
-              <Image src={onToManyFrontImage} alt="onToManyFrontImage" />
-              <Image src={onToManyBackImage} alt="onToManyBackImage" />
-            </Slider>
-          </div>
-        </article>
-      </main>
+        <p style={{whiteSpace: 'pre-line'}}>
+          <strong>If</strong> you would like to participate in the random draw, {'\n'} please click the button below.
+        </p>
+        <button onClick={() => router.push('/oneToMany')}>start</button>
+      </section>
       <Footer />
       <style jsx>{style}</style>
     </>
@@ -64,3 +49,21 @@ function Home() {
 }
 
 export default Home;
+
+/*
+ <div
+            style={{
+              whiteSpace: 'pre-line',
+              backgroundColor: 'red'
+            }}
+          >
+            <strong style={{color: 'black', fontSize: 50}}>If</strong> you want to draw randomly, {'\n'} press the start
+            button.
+            <strong style={{color: 'black', fontSize: 50}}>If</strong> you want to draw randomly, {'\n'} press the start
+            button.
+            <strong style={{color: 'black', fontSize: 50}}>If</strong> you want to draw randomly, {'\n'} press the start
+            button.
+          </div>
+          <Image src={onToManyFrontImage} alt="onToManyFrontImage" />
+          <Image src={onToManyBackImage} alt="onToManyBackImage" />
+*/
