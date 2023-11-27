@@ -20,8 +20,8 @@ interface IProps {
 
 function OneToMany({onBack, onConfirm}: IProps) {
   const [defaultUser, setDefaultUser] = useState<string[]>(defaultName.sort()); // * All User
-  const [addUser, setAddUser] = useState<string>(''); // * add User
   const [selectUser, setSelectUser] = useState<string[]>([]); // * selected User
+  const [addUser, setAddUser] = useState<string>(''); // * add User
 
   //* click default user name
   const onClickDefaultUser = (event: MouseEvent): void => {
@@ -111,7 +111,11 @@ function OneToMany({onBack, onConfirm}: IProps) {
         <div className="select-name">
           <span>Select</span>
           {defaultUser?.map((name) => (
-            <button key={getUniqueKey()} onClick={onClickDefaultUser}>
+            <button
+              className={selectUser.find((el) => el === name) ? 'active' : ''}
+              key={getUniqueKey()}
+              onClick={onClickDefaultUser}
+            >
               {name}
             </button>
           ))}
@@ -222,6 +226,9 @@ function OneToMany({onBack, onConfirm}: IProps) {
           border-radius: 15px;
           padding: 20px;
           gap: 10px;
+          > .active {
+            background-color: orange;
+          }
           > span {
             display: inline-block;
             position: absolute;
