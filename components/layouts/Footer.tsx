@@ -14,8 +14,8 @@ const style = css`
 function Footer() {
   return (
     <>
-      <footer>2023. Designed By yeong.</footer>
-      <style jsx>{style}</style>
+      {/* <footer>2023. Designed By yeong.</footer>
+      <style jsx>{style}</style>*/}
     </>
   );
 }

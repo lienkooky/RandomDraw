@@ -1,6 +1,7 @@
 'use client';
 
 import React, {useState} from 'react';
+import {useRouter} from 'next/navigation';
 import Header from 'components/layouts/Header';
 import Footer from 'components/layouts/Footer';
 import OneToMany from 'components/views/one-to-many/OneToMany';
@@ -11,6 +12,7 @@ function OneToManyTask() {
   const [userList, setUserList] = useState<string[]>([]); //* selected users
   const [firstArr, setFirstArr] = useState<string[]>([]); //* random firstArr
   const [secondArr, setSecondArr] = useState<string[]>([]); //* random secondArr
+  const router = useRouter();
 
   const onConfirmOneToMany = (selectUser: string[], first: string[], second: string[]): void => {
     setUserList(selectUser);
@@ -26,7 +28,14 @@ function OneToManyTask() {
   return (
     <>
       <Header />
-      {step === 0 && <OneToMany onConfirm={onConfirmOneToMany} onBack={() => {}} />}
+      {step === 0 && (
+        <OneToMany
+          onConfirm={onConfirmOneToMany}
+          onBack={() => {
+            router.push('/');
+          }}
+        />
+      )}
       {step === 1 && (
         <Result userList={userList} firstArr={firstArr} secondArr={secondArr} onConfirm={onComfirmResult} />
       )}
