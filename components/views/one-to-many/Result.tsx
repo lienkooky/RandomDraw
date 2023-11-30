@@ -1,6 +1,15 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import Image from 'next/image';
+import css from 'styled-jsx/css';
+import CommonImages from 'assets/images/CommonImages';
+import {FaHome} from 'react-icons/fa';
+import {FaSearch} from 'react-icons/fa';
+import {FaCamera} from 'react-icons/fa';
+import {FaHeart} from 'react-icons/fa';
+import {FaPortrait} from 'react-icons/fa';
+import {getUniqueKey} from 'components/utils/StringUtils';
 
 interface IProps {
   userList: string[];
@@ -9,10 +18,25 @@ interface IProps {
   onConfirm(): void;
 }
 
+function FaHeartWithText() {
+  return (
+    <svg width="100" height="100" viewBox="0 0 32 32">
+      {/* 원하는 위치에 텍스트를 추가합니다. */}
+      <text x="10" y="20" fontSize="12" fill="black">
+        Your Text
+      </text>
+      {/* react-icons에서 가져온 하트 아이콘을 그대로 사용합니다. */}
+      <FaHeart size={32} color="red" />
+    </svg>
+  );
+}
+
 function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
   const [resultList, setResultList] = useState([]);
 
   useEffect(() => {
+    console.log('secondArr', secondArr);
+    console.log('firstArr', firstArr);
     const resultArr: any = [];
     const shuffledList = [...userList];
     let j = 0;
@@ -30,6 +54,10 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
         j++;
       }
     }
+
+    console.log('resultArr', resultArr);
+
+    setResultList(resultArr);
   }, [userList]);
 
   const onClickConfirm = (): void => {
@@ -37,43 +65,158 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
   };
 
   return (
-    <section>
-      <button onClick={onClickConfirm}>다시하기</button>
-    </section>
+    <>
+      <section className="first-section">
+        <div className="first-title">
+          <strong>Matching Result</strong>
+        </div>
+      </section>
+      <section className="second-section">
+        <div className="matching-result">
+          <span>Result</span>
+          <div className="cards-wrap">
+            {resultList.map((result) => {
+              console.log('aaaaa', result);
+              console.log('Object.values(result)', Object.values(result));
+              return (
+                <div className="card" key={getUniqueKey()}>
+                  <article className="card-first-article">
+                    <span>R</span>
+                    <p>{Object.keys(result)}</p>
+                  </article>
+                  <article className="card-second-article">
+                    {Object.values(result)
+                      .flat()
+                      .map((user) => (
+                        <div>{user as unknown as string}</div>
+                      ))}
+                  </article>
+                  <article className="card-third-article">
+                    <FaHome />
+                    <FaSearch />
+                    <FaCamera />
+                    <FaHeart />
+                    <FaPortrait />
+                  </article>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <section className="third-section">
+        <button onClick={onClickConfirm}>다시하기</button>
+      </section>
+      <style jsx>{`
+        .first-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          text-align: center;
+          padding: 0 30px;
+          width: 100%;
+          height: 300px;
+          > .first-title {
+            font-size: 50px;
+          }
+        }
+        .second-section {
+          padding: 0 30px;
+          > .matching-result {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+            border: 1px solid red;
+            border-radius: 15px;
+            padding: 30px;
+            > span {
+              display: inline-block;
+              position: absolute;
+              top: -20px;
+              left: 14px;
+              padding: 10px;
+              background: white;
+              font-size: 20px;
+              font-weight: bold;
+              color: #888;
+            }
+          }
+        }
+        .third-section {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 30px;
+          margin: 30px 0;
+          height: 300px;
+          gap: 50px;
+          > button {
+            position: relative;
+            text-align: center;
+            padding: 25px 45px;
+            border: 0;
+            border-radius: 15px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+        }
+        .cards-wrap {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          gap: 10px;
+        }
+        .card {
+          max-width: 350px;
+          width: 350px;
+          height: 500px;
+          border: 1px solid black;
+          border-radius: 10px;
+          gap: 10px;
+        }
+        .card-first-article {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          box-sizing: border-box;
+          padding: 0 20px;
+          height: 80px;
+          border-bottom: 1px solid black;
+          > span {
+            width: 60px;
+            height: 60px;
+            border: 1px solid black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          > p {
+            margin-top: 5px;
+            margin-left: 10px;
+          }
+        }
+        .card-second-article {
+          width: 100%;
+          height: 350px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          gap: 10px;
+        }
+        .card-third-article {
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+        }
+      `}</style>
+    </>
   );
 }
 
 export default Result;
-
-/*
-const firstArr: string[] = [];
-    const secondArr: string[] = [];
-    const resultArr: string[] = [];
-
-    const predecessor = async (): Promise<string> => {
-      while (userList.length !== firstArr.length) {
-        const randomIndex = Math.floor(Math.random() * userList.length);
-        const findData = firstArr.find((user) => user === userList[randomIndex]);
-
-        if (!findData) {
-          firstArr.push(userList[randomIndex]);
-        }
-      }
-
-      let i = 0;
-      while (userList.length !== secondArr.length) {
-        const randomIndex = Math.floor(Math.random() * userList.length);
-        const findData = secondArr.find((user) => user === userList[randomIndex]);
-
-        if (!findData) {
-          if (firstArr[i] !== userList[randomIndex]) {
-            secondArr.push(userList[randomIndex]);
-            i++;
-          }
-        }
-      }
-      console.log('firstArr', firstArr);
-      console.log('secondArr', secondArr);
-      return 'ok';
-    };
-*/

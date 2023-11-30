@@ -1,6 +1,6 @@
 'use client';
 
-import {useState, ChangeEvent, MouseEvent} from 'react';
+import {useState, ChangeEvent, MouseEvent, useEffect} from 'react';
 import Image from 'next/image';
 import css from 'styled-jsx/css';
 import {defaultName} from 'components/types/mockup';
@@ -22,6 +22,29 @@ function OneToMany({onBack, onConfirm}: IProps) {
   const [defaultUser, setDefaultUser] = useState<string[]>(defaultName.sort()); // * All User
   const [selectUser, setSelectUser] = useState<string[]>([]); // * selected User
   const [addUser, setAddUser] = useState<string>(''); // * add User
+  const [firstArr, setFirstArr] = useState<string[]>([]);
+  const [secondArr, setSecondArr] = useState<string[]>([]);
+
+  useEffect(() => {
+    const firstArrData: string[] = selectUser.slice(); // * copy arr
+
+    for (let i = firstArrData.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [firstArrData[i], firstArrData[j]] = [firstArrData[j], firstArrData[i]];
+    }
+
+    //  while (selectUser.length !== firstArr.length) {
+    // const randomIndex = Math.floor(Math.random() * selectUser.length);
+    // const findData = firstArr.find((user) => user === selectUser[randomIndex]);
+
+    // if (!findData) {
+    //  firstArrData.push(selectUser[randomIndex]);
+    //}
+    // }
+
+    console.log('firstArrData', firstArrData);
+    setFirstArr(firstArrData);
+  }, [selectUser]);
 
   //* click default user name
   const onClickDefaultUser = (event: MouseEvent): void => {
@@ -61,9 +84,9 @@ function OneToMany({onBack, onConfirm}: IProps) {
       alert('3명 이상 선택해주세요.');
       return;
     }
-
+    /*
     const firstArr: string[] = [];
-    const secondArr: string[] = [];
+    const secondArrData: string[] = [];
 
     while (selectUser.length !== firstArr.length) {
       const randomIndex = Math.floor(Math.random() * selectUser.length);
@@ -88,8 +111,54 @@ function OneToMany({onBack, onConfirm}: IProps) {
     }
     console.log('firstArr', firstArr);
     console.log('secondArr', secondArr);
+*/
+    /*
+    const secondArrData: string[] = firstArr.slice();
+    const result: string[] = [];
 
-    onConfirm(selectUser, firstArr, secondArr);
+    for (let i = secondArrData.length; i > 0; i--) {
+      //let i = secondArrData.length;
+      //while (secondArrData.length > 0) {
+      const randomIndex = Math.floor(Math.random() * secondArrData.length);
+      const findData = result.find((user) => user === firstArr[randomIndex]);
+
+      if (!findData) {
+        if (firstArr[randomIndex] !== result[randomIndex]) {
+          const findUser = secondArrData.find((user) => user === secondArrData[randomIndex]);
+          const findIndex = secondArrData.findIndex(findUser);
+          result.push(secondArrData[randomIndex]);
+          secondArrData.splice(findIndex, 1);
+        }
+        i++;
+      }
+      i++;
+      //}
+    }
+
+    console.log('secondArrData', result);
+    setSecondArr(() => {
+      return [...result];
+    });
+*/
+    const secondArrData: string[] = firstArr.slice();
+
+    for (let i = secondArrData.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [secondArrData[i], secondArrData[j]] = [secondArrData[j], secondArrData[i]];
+    }
+
+    const result: string[] = [];
+    for (let i = 0; i < firstArr.length; i++) {
+      let user = secondArrData[i];
+      while (firstArr[i] === user) {
+        user = secondArrData[Math.floor(Math.random() * firstArr.length)];
+      }
+      result.push(user);
+    }
+
+    console.log('result', result);
+
+    onConfirm(selectUser, firstArr, result);
   };
 
   return (
@@ -149,7 +218,6 @@ function OneToMany({onBack, onConfirm}: IProps) {
           </div>
         ))}
       </div>
-
       <section className="fourth-section">
         {selectUser.length > 0 && <button onClick={onClickConfirm}>결과보기</button>}
         <button onClick={() => onBack()}>뒤로가기</button>
