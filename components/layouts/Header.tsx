@@ -3,6 +3,7 @@
 import {ReactElement} from 'react';
 import Image from 'next/image';
 import css from 'styled-jsx/css';
+import {useRouter} from 'next/navigation';
 import RamdomDraw from 'assets/images/randomDrawLogo.png';
 
 const style = css`
@@ -31,14 +32,20 @@ const style = css`
 `;
 
 function Header(): ReactElement {
+  const router = useRouter();
+
   return (
     <header>
       <div style={{flex: 1}}>
         <Image src={RamdomDraw} alt="logo" />
       </div>
       <div style={{flex: 4}}>
-        <span style={{cursor: 'pointer', margin: '0 30px'}}>Home</span>
-        <span style={{cursor: 'pointer', margin: '0 30px'}}>1:N</span>
+        <span style={{cursor: 'pointer', margin: '0 30px'}} onClick={() => router.push('/')}>
+          Home
+        </span>
+        <span style={{cursor: 'pointer', margin: '0 30px'}} onClick={() => router.push('/oneToMany')}>
+          1:N
+        </span>
       </div>
       <style jsx>{style}</style>
     </header>
