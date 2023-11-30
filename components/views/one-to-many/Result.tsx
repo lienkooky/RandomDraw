@@ -3,12 +3,12 @@
 import {useEffect, useState} from 'react';
 import Image from 'next/image';
 import css from 'styled-jsx/css';
-import CommonImages from 'assets/images/CommonImages';
 import {FaHome} from 'react-icons/fa';
+import {FaHeart} from 'react-icons/fa';
 import {FaSearch} from 'react-icons/fa';
 import {FaCamera} from 'react-icons/fa';
-import {FaHeart} from 'react-icons/fa';
 import {FaPortrait} from 'react-icons/fa';
+import CommonImages from 'assets/images/CommonImages';
 import {getUniqueKey} from 'components/utils/StringUtils';
 
 interface IProps {
@@ -16,19 +16,6 @@ interface IProps {
   firstArr: string[];
   secondArr: string[];
   onConfirm(): void;
-}
-
-function FaHeartWithText() {
-  return (
-    <svg width="100" height="100" viewBox="0 0 32 32">
-      {/* 원하는 위치에 텍스트를 추가합니다. */}
-      <text x="10" y="20" fontSize="12" fill="black">
-        Your Text
-      </text>
-      {/* react-icons에서 가져온 하트 아이콘을 그대로 사용합니다. */}
-      <FaHeart size={32} color="red" />
-    </svg>
-  );
 }
 
 function Result({userList, firstArr, secondArr, onConfirm}: IProps) {

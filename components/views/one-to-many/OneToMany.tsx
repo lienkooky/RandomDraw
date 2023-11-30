@@ -3,15 +3,15 @@
 import {useState, ChangeEvent, MouseEvent, useEffect} from 'react';
 import Image from 'next/image';
 import css from 'styled-jsx/css';
+import {FaHome} from 'react-icons/fa';
+import {FaHeart} from 'react-icons/fa';
+import {FaSearch} from 'react-icons/fa';
+import {FaCamera} from 'react-icons/fa';
+import {FaPortrait} from 'react-icons/fa';
 import {defaultName} from 'components/types/mockup';
 import CommonImages from 'assets/images/CommonImages';
 import HaryboMain from 'assets/images/harybo_main.png';
 import {getUniqueKey} from 'components/utils/StringUtils';
-import {FaHome} from 'react-icons/fa';
-import {FaSearch} from 'react-icons/fa';
-import {FaCamera} from 'react-icons/fa';
-import {FaHeart} from 'react-icons/fa';
-import {FaPortrait} from 'react-icons/fa';
 
 interface IProps {
   onBack(): void;
@@ -84,62 +84,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
       alert('3명 이상 선택해주세요.');
       return;
     }
-    /*
-    const firstArr: string[] = [];
-    const secondArrData: string[] = [];
 
-    while (selectUser.length !== firstArr.length) {
-      const randomIndex = Math.floor(Math.random() * selectUser.length);
-      const findData = firstArr.find((user) => user === selectUser[randomIndex]);
-
-      if (!findData) {
-        firstArr.push(selectUser[randomIndex]);
-      }
-    }
-
-    let i = 0;
-    while (selectUser.length !== secondArr.length) {
-      const randomIndex = Math.floor(Math.random() * selectUser.length);
-      const findData = secondArr.find((user) => user === selectUser[randomIndex]);
-
-      if (!findData) {
-        if (firstArr[i] !== selectUser[randomIndex]) {
-          secondArr.push(selectUser[randomIndex]);
-          i++;
-        }
-      }
-    }
-    console.log('firstArr', firstArr);
-    console.log('secondArr', secondArr);
-*/
-    /*
-    const secondArrData: string[] = firstArr.slice();
-    const result: string[] = [];
-
-    for (let i = secondArrData.length; i > 0; i--) {
-      //let i = secondArrData.length;
-      //while (secondArrData.length > 0) {
-      const randomIndex = Math.floor(Math.random() * secondArrData.length);
-      const findData = result.find((user) => user === firstArr[randomIndex]);
-
-      if (!findData) {
-        if (firstArr[randomIndex] !== result[randomIndex]) {
-          const findUser = secondArrData.find((user) => user === secondArrData[randomIndex]);
-          const findIndex = secondArrData.findIndex(findUser);
-          result.push(secondArrData[randomIndex]);
-          secondArrData.splice(findIndex, 1);
-        }
-        i++;
-      }
-      i++;
-      //}
-    }
-
-    console.log('secondArrData', result);
-    setSecondArr(() => {
-      return [...result];
-    });
-*/
     const secondArrData: string[] = firstArr.slice();
 
     for (let i = secondArrData.length - 1; i > 0; i--) {
