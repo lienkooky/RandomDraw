@@ -33,15 +33,6 @@ function OneToMany({onBack, onConfirm}: IProps) {
       [firstArrData[i], firstArrData[j]] = [firstArrData[j], firstArrData[i]];
     }
 
-    //  while (selectUser.length !== firstArr.length) {
-    // const randomIndex = Math.floor(Math.random() * selectUser.length);
-    // const findData = firstArr.find((user) => user === selectUser[randomIndex]);
-
-    // if (!findData) {
-    //  firstArrData.push(selectUser[randomIndex]);
-    //}
-    // }
-
     console.log('firstArrData', firstArrData);
     setFirstArr(firstArrData);
   }, [selectUser]);
@@ -182,8 +173,8 @@ function OneToMany({onBack, onConfirm}: IProps) {
         .second-section {
           box-sizing: border-box;
           display: flex;
-          flex-direction: column;
-          justify-content: center;
+          align-items: flex-start;
+          justify-content: flex-start;
           padding: 0 30px;
           gap: 20px;
         }
@@ -193,8 +184,10 @@ function OneToMany({onBack, onConfirm}: IProps) {
           justify-content: flex-start;
           width: 400px;
           position: relative;
-          border: 1px solid red;
+          border: 1px solid #201e33;
           border-radius: 15px;
+          padding: 10px 10px;
+          gap: 10px;
           > span {
             display: inline-block;
             position: absolute;
@@ -203,8 +196,9 @@ function OneToMany({onBack, onConfirm}: IProps) {
             font-weight: bold;
             top: -20px;
             left: 14px;
-            background-color: rgb(233, 233, 233);
+            background-color: #fff;
             color: #888;
+            width: auto;
           }
           > input {
             padding-left: 10px;
@@ -223,11 +217,17 @@ function OneToMany({onBack, onConfirm}: IProps) {
             font-size: 20px;
             font-weight: bold;
             outline: none;
-            border: 0;
             border-radius: 15px;
-            background-color: rgb(233, 233, 233);
-            color: #888;
+            border: 1px solid #2f4858;
+            background-color: #2f4858;
+            color: #fff;
             cursor: pointer;
+            transition: all 0.4s;
+            &:hover {
+              background-color: #fff;
+              border: 1px solid #2f4858;
+              color: #2f4858;
+            }
           }
         }
         .select-name {
@@ -235,12 +235,13 @@ function OneToMany({onBack, onConfirm}: IProps) {
           flex-wrap: wrap;
           align-items: center;
           position: relative;
-          border: 1px solid red;
+          border: 1px solid #201e33;
           border-radius: 15px;
-          padding: 20px;
+          padding: 23px;
           gap: 10px;
           > .active {
-            background-color: orange;
+            background-color: #2f4858;
+            color: #fff;
           }
           > span {
             display: inline-block;
@@ -248,7 +249,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
             top: -20px;
             left: 14px;
             padding: 10px;
-            background: white;
+            background: #ffffff;
             font-size: 20px;
             font-weight: bold;
             color: #888;
@@ -322,10 +323,10 @@ function OneToMany({onBack, onConfirm}: IProps) {
             justify-content: center;
             cursor: pointer;
             background-color: white;
+            transition: all 0.4s;
             > img {
               width: 20px;
               heigth: 20px;
-              background-color: white;
             }
           }
         }
@@ -347,11 +348,19 @@ function OneToMany({onBack, onConfirm}: IProps) {
             position: relative;
             text-align: center;
             padding: 25px 45px;
-            border: 0;
+            border: 1px solid #2f4858;
             border-radius: 15px;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            background-color: #2f4858;
+            color: #fff;
+            transition: all 0.4s;
+            &:hover {
+              background-color: #fff;
+              border: 1px solid #2f4858;
+              color: #2f4858;
+            }
           }
         }
       `}</style>

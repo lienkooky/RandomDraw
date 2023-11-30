@@ -22,9 +22,24 @@ const style = css`
       margin-top: 100px;
     }
     > button {
+      margin: 0 auto;
       margin-top: 100px;
       padding: 50px;
       font-size: 80px;
+      font-weight: bold;
+      outline: none;
+      border-radius: 15px;
+      border: 1px solid #2f4858;
+      background-color: #2f4858;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.4s;
+      &:hover {
+        background-color: #fff;
+        border: 1px solid #2f4858;
+        outline: auto;
+        color: #2f4858;
+      }
     }
   }
 `;
