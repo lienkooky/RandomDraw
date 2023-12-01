@@ -60,6 +60,14 @@ function OneToMany({onBack, onConfirm}: IProps) {
     if (addUser.trim() === '') {
       return;
     }
+    console.log('defaultUser', defaultUser);
+    console.log('addUser', addUser);
+    if (defaultUser.includes(addUser.trim())) {
+      alert('이미 등록되어있습니다.');
+      setAddUser('');
+      return;
+    }
+
     setDefaultUser((prev) => [...prev, addUser]);
     setAddUser('');
   };
@@ -127,9 +135,11 @@ function OneToMany({onBack, onConfirm}: IProps) {
         </div>
       </section>
       <section className="third-section">
-        <span>
-          총 <strong>{selectUser.length}</strong>명
-        </span>
+        {selectUser.length > 0 && (
+          <span>
+            총 <strong>{selectUser.length}</strong>명
+          </span>
+        )}
       </section>
       <div className="cards-wrap">
         {selectUser.map((selected) => (
@@ -212,6 +222,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
             margin: 20px auto;
           }
           > button {
+            min-width: 80px;
             margin: 20px auto;
             padding: 10px;
             font-size: 20px;
@@ -286,6 +297,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
         }
         .card {
           max-width: 350px;
+          min-width: 350px;
           height: 500;
           border: 1px solid black;
           border-radius: 10px;

@@ -7,7 +7,6 @@ const style = css`
   .root-container {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 30px);
   }
 `;
 

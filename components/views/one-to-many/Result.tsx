@@ -115,7 +115,7 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
             flex-wrap: wrap;
             align-items: center;
             position: relative;
-            border: 1px solid red;
+            border: 1px solid #2f4858;
             border-radius: 15px;
             padding: 30px;
             > span {
@@ -143,10 +143,12 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
             position: relative;
             text-align: center;
             padding: 25px 45px;
-            border: 0;
+            border: 1px solid #2f4858;
             border-radius: 15px;
             font-size: 40px;
             font-weight: bold;
+            background-color: #2f4858;
+            color: #fff;
             cursor: pointer;
           }
         }
@@ -159,6 +161,7 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
         }
         .card {
           max-width: 350px;
+          min-width: 350px;
           width: 350px;
           height: 500px;
           border: 1px solid black;

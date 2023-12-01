@@ -4,7 +4,6 @@ import React from 'react';
 import css from 'styled-jsx/css';
 import {useRouter} from 'next/navigation';
 import Header from 'components/layouts/Header';
-import Footer from 'components/layouts/Footer';
 
 const style = css`
   .first-section {
@@ -17,9 +16,6 @@ const style = css`
     height: 1000px;
     > h1 {
       font-size: 100px;
-    }
-    > p {
-      margin-top: 100px;
     }
     > button {
       margin: 0 auto;
@@ -52,12 +48,11 @@ function Home() {
       <Header />
       <section className="first-section">
         <h1>Random Draw</h1>
-        <p style={{whiteSpace: 'pre-line'}}>
+        <p style={{whiteSpace: 'pre-line', textAlign: 'center'}}>
           <strong>If</strong> you would like to participate in the random draw, {'\n'} please click the button below.
         </p>
         <button onClick={() => router.push('/oneToMany')}>start</button>
       </section>
-      <Footer />
       <style jsx>{style}</style>
     </>
   );

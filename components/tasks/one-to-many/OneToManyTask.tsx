@@ -3,7 +3,6 @@
 import React, {useState} from 'react';
 import {useRouter} from 'next/navigation';
 import Header from 'components/layouts/Header';
-import Footer from 'components/layouts/Footer';
 import Result from 'components/views/one-to-many/Result';
 import OneToMany from 'components/views/one-to-many/OneToMany';
 
@@ -41,7 +40,6 @@ function OneToManyTask() {
       {step === 1 && (
         <Result userList={userList} firstArr={firstArr} secondArr={secondArr} onConfirm={onComfirmResult} />
       )}
-      <Footer />
     </>
   );
 }
