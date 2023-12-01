@@ -1,7 +1,9 @@
 import type {Metadata} from 'next';
+import 'assets/styles/reset.scss';
 import {PropsWithChildren} from 'react';
 import StyledJsxRegistry from 'app/registry';
-import 'assets/styles/reset.scss';
+import AlertModal from 'components/modal/AlertModal';
+import RecoilProvider from 'data/RecoilProvider/RecoilProvider';
 
 export const metadata: Metadata = {
   title: 'Random Draw',
@@ -13,9 +15,12 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: PropsWithChildren) {
   return (
     <html lang="ko">
-      <body>
-        <StyledJsxRegistry>{children}</StyledJsxRegistry>
-      </body>
+      <RecoilProvider>
+        <body suppressHydrationWarning={true}>
+          <StyledJsxRegistry>{children}</StyledJsxRegistry>
+          <AlertModal />
+        </body>
+      </RecoilProvider>
     </html>
   );
 }

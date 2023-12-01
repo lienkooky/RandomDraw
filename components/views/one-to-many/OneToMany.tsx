@@ -7,7 +7,9 @@ import {FaHome} from 'react-icons/fa';
 import {FaHeart} from 'react-icons/fa';
 import {FaSearch} from 'react-icons/fa';
 import {FaCamera} from 'react-icons/fa';
+import {useSetRecoilState} from 'recoil';
 import {FaPortrait} from 'react-icons/fa';
+import {alertModalState} from 'data/AlertModal';
 import {defaultName} from 'components/types/mockup';
 import CommonImages from 'assets/images/CommonImages';
 import HaryboMain from 'assets/images/harybo_main.png';
@@ -22,8 +24,8 @@ function OneToMany({onBack, onConfirm}: IProps) {
   const [defaultUser, setDefaultUser] = useState<string[]>(defaultName.sort()); // * All User
   const [selectUser, setSelectUser] = useState<string[]>([]); // * selected User
   const [addUser, setAddUser] = useState<string>(''); // * add User
-  const [firstArr, setFirstArr] = useState<string[]>([]);
-  const [secondArr, setSecondArr] = useState<string[]>([]);
+  const [firstArr, setFirstArr] = useState<string[]>([]); // * first random Array
+  const setAlertModal = useSetRecoilState(alertModalState);
 
   useEffect(() => {
     const firstArrData: string[] = selectUser.slice(); // * copy arr
@@ -33,7 +35,6 @@ function OneToMany({onBack, onConfirm}: IProps) {
       [firstArrData[i], firstArrData[j]] = [firstArrData[j], firstArrData[i]];
     }
 
-    console.log('firstArrData', firstArrData);
     setFirstArr(firstArrData);
   }, [selectUser]);
 
@@ -42,7 +43,12 @@ function OneToMany({onBack, onConfirm}: IProps) {
     const {textContent} = event.currentTarget as HTMLButtonElement;
 
     if (textContent && selectUser.includes(textContent)) {
-      alert('이미 선택되었습니다.');
+      setAlertModal({
+        title: '알림',
+        content: <>이미 선택되었습니다.</>,
+        confirmLabel: '확인',
+        onConfirm: () => {}
+      });
       return;
     }
 
@@ -60,10 +66,14 @@ function OneToMany({onBack, onConfirm}: IProps) {
     if (addUser.trim() === '') {
       return;
     }
-    console.log('defaultUser', defaultUser);
-    console.log('addUser', addUser);
+
     if (defaultUser.includes(addUser.trim())) {
-      alert('이미 등록되어있습니다.');
+      setAlertModal({
+        title: '알림',
+        content: <>이미 등록되어 있습니다.</>,
+        confirmLabel: '확인',
+        onConfirm: () => {}
+      });
       setAddUser('');
       return;
     }
@@ -80,27 +90,45 @@ function OneToMany({onBack, onConfirm}: IProps) {
   //* result
   const onClickConfirm = (): void => {
     if (selectUser.length < 3) {
-      alert('3명 이상 선택해주세요.');
+      setAlertModal({
+        title: '알림',
+        content: <>3명 이상 선택해주세요.</>,
+        confirmLabel: '확인',
+        onConfirm: () => {}
+      });
       return;
     }
 
+    const result: string[] = [];
     const secondArrData: string[] = firstArr.slice();
 
-    for (let i = secondArrData.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [secondArrData[i], secondArrData[j]] = [secondArrData[j], secondArrData[i]];
-    }
+    let j = 0;
+    while (j < firstArr.length) {
+      const findData = secondArrData.find((user: string) => {
+        return user !== firstArr[j];
+      });
 
-    const result: string[] = [];
-    for (let i = 0; i < firstArr.length; i++) {
-      let user = secondArrData[i];
-      while (firstArr[i] === user) {
-        user = secondArrData[Math.floor(Math.random() * firstArr.length)];
+      // * escape
+      if (secondArrData.length === 0) {
+        break;
       }
-      result.push(user);
-    }
 
-    console.log('result', result);
+      if (findData) {
+        // * push
+        result.push(findData);
+
+        // * delete secondArrData
+        const findIndex = secondArrData.indexOf(findData);
+        secondArrData.splice(findIndex, 1);
+        j++;
+      }
+
+      // * shuffled secondArrData
+      for (let i = secondArrData.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [secondArrData[i], secondArrData[j]] = [secondArrData[j], secondArrData[i]];
+      }
+    }
 
     onConfirm(selectUser, firstArr, result);
   };
@@ -152,7 +180,12 @@ function OneToMany({onBack, onConfirm}: IProps) {
               </div>
             </article>
             <article>
-              <Image style={{objectFit: 'cover'}} src={HaryboMain} alt="harybo-main" layout="responsive" priority />
+              <Image
+                style={{objectFit: 'cover', width: '100%', height: '100%'}}
+                src={HaryboMain}
+                alt="harybo-main"
+                priority
+              />
             </article>
             <article className="card-third-article">
               <FaHome />

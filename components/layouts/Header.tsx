@@ -37,7 +37,7 @@ function Header(): ReactElement {
   return (
     <header>
       <div style={{flex: 1}}>
-        <Image src={RamdomDraw} alt="logo" />
+        <Image src={RamdomDraw} priority alt="logo" />
       </div>
       <div style={{flex: 4}}>
         <span style={{cursor: 'pointer', margin: '0 30px'}} onClick={() => router.push('/')}>

@@ -22,8 +22,17 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
   const [resultList, setResultList] = useState([]);
 
   useEffect(() => {
-    console.log('secondArr', secondArr);
-    console.log('firstArr', firstArr);
+    // * shuffled data
+
+    for (let i = firstArr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [firstArr[i], firstArr[j]] = [firstArr[j], firstArr[i]];
+    }
+    for (let i = secondArr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [secondArr[i], secondArr[j]] = [secondArr[j], secondArr[i]];
+    }
+
     const resultArr: any = [];
     const shuffledList = [...userList];
     let j = 0;
@@ -41,8 +50,6 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
         j++;
       }
     }
-
-    console.log('resultArr', resultArr);
 
     setResultList(resultArr);
   }, [userList]);
@@ -63,8 +70,6 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
           <span>Result</span>
           <div className="cards-wrap">
             {resultList.map((result) => {
-              console.log('aaaaa', result);
-              console.log('Object.values(result)', Object.values(result));
               return (
                 <div className="card" key={getUniqueKey()}>
                   <article className="card-first-article">
@@ -75,7 +80,7 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
                     {Object.values(result)
                       .flat()
                       .map((user) => (
-                        <div>{user as unknown as string}</div>
+                        <div key={getUniqueKey()}>{user as unknown as string}</div>
                       ))}
                   </article>
                   <article className="card-third-article">
