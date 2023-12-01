@@ -10,6 +10,7 @@ import {FaCamera} from 'react-icons/fa';
 import {FaPortrait} from 'react-icons/fa';
 import CommonImages from 'assets/images/CommonImages';
 import {getUniqueKey} from 'components/utils/StringUtils';
+import resultHeart from 'assets/images/result_heart.png';
 
 interface IProps {
   userList: string[];
@@ -23,15 +24,6 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
 
   useEffect(() => {
     // * shuffled data
-
-    for (let i = firstArr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [firstArr[i], firstArr[j]] = [firstArr[j], firstArr[i]];
-    }
-    for (let i = secondArr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [secondArr[i], secondArr[j]] = [secondArr[j], secondArr[i]];
-    }
 
     const resultArr: any = [];
     const shuffledList = [...userList];
@@ -80,7 +72,10 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
                     {Object.values(result)
                       .flat()
                       .map((user) => (
-                        <div key={getUniqueKey()}>{user as unknown as string}</div>
+                        <div className="card-second-user" key={getUniqueKey()}>
+                          <span>{user as unknown as string}</span>
+                          <Image src={resultHeart} width={170} height={170} alt="heart" priority />
+                        </div>
                       ))}
                   </article>
                   <article className="card-third-article">
@@ -203,11 +198,23 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
           justify-content: space-around;
           gap: 10px;
         }
+        .card-second-user {
+          box-sizing: border-box;
+          position: relative;
+          > span {
+            position: absolute;
+            top: 50px;
+            left: 25px;
+            color: #201e33;
+          }
+        }
         .card-third-article {
           display: inline-flex;
           align-items: center;
           justify-content: space-around;
           width: 100%;
+          border-top: 1px solid #2f4858;
+          height: 70px;
         }
       `}</style>
     </>
