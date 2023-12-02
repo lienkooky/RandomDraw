@@ -29,6 +29,12 @@ function OneToMany({onBack, onConfirm}: IProps) {
   const setAlertModal = useSetRecoilState(alertModalState); // * alert
   const setIsLoading = useSetRecoilState(loadingSpinnerState); // * spinner
 
+  // * loading
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  // * make firstArr
   useEffect(() => {
     const firstArrData: string[] = selectUser.slice(); // * copy arr
 

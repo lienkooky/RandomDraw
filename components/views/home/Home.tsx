@@ -2,8 +2,10 @@
 
 import React from 'react';
 import css from 'styled-jsx/css';
+import {useSetRecoilState} from 'recoil';
 import {useRouter} from 'next/navigation';
 import Header from 'components/layouts/Header';
+import {loadingSpinnerState} from 'data/LoadingSpinner';
 
 const style = css`
   .first-section {
@@ -41,7 +43,8 @@ const style = css`
 `;
 
 function Home() {
-  const router = useRouter();
+  const router = useRouter(); // * router
+  const setIsLoading = useSetRecoilState(loadingSpinnerState); // * spinner
 
   return (
     <>
@@ -51,7 +54,14 @@ function Home() {
         <p style={{whiteSpace: 'pre-line', textAlign: 'center'}}>
           <strong>If</strong> you would like to participate in the random draw, {'\n'} please click the button below.
         </p>
-        <button onClick={() => router.push('/oneToMany')}>start</button>
+        <button
+          onClick={() => {
+            setIsLoading(true);
+            router.push('/oneToMany');
+          }}
+        >
+          start
+        </button>
       </section>
       <style jsx>{style}</style>
     </>

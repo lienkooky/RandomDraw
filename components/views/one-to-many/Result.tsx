@@ -26,6 +26,10 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
   const setIsLoading = useSetRecoilState(loadingSpinnerState);
 
   useEffect(() => {
+    setIsLoading(true);
+  }, []);
+
+  useEffect(() => {
     // * shuffled data
 
     const resultArr: any = [];
@@ -53,8 +57,12 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
     }
 
     setResultList(resultArr);
-    setIsLoading(false);
   }, [userList]);
+
+  // * image load
+  const onLoadImage = (): void => {
+    setIsLoading(false);
+  };
 
   const onClickConfirm = (): void => {
     onConfirm();
@@ -84,7 +92,7 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
                       .map((user) => (
                         <div className="card-second-user" key={getUniqueKey()}>
                           <span>{user as unknown as string}</span>
-                          <Image src={resultHeart} width={170} height={170} alt="heart" priority />
+                          <Image src={resultHeart} width={170} height={170} alt="heart" onLoad={onLoadImage} priority />
                         </div>
                       ))}
                   </article>
