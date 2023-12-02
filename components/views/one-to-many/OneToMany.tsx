@@ -13,6 +13,7 @@ import {alertModalState} from 'data/AlertModal';
 import {defaultName} from 'components/types/mockup';
 import CommonImages from 'assets/images/CommonImages';
 import HaryboMain from 'assets/images/harybo_main.png';
+import {loadingSpinnerState} from 'data/LoadingSpinner';
 import {getUniqueKey} from 'components/utils/StringUtils';
 
 interface IProps {
@@ -25,7 +26,8 @@ function OneToMany({onBack, onConfirm}: IProps) {
   const [selectUser, setSelectUser] = useState<string[]>([]); // * selected User
   const [addUser, setAddUser] = useState<string>(''); // * add User
   const [firstArr, setFirstArr] = useState<string[]>([]); // * first random Array
-  const setAlertModal = useSetRecoilState(alertModalState);
+  const setAlertModal = useSetRecoilState(alertModalState); // * alert
+  const setIsLoading = useSetRecoilState(loadingSpinnerState); // * spinner
 
   useEffect(() => {
     const firstArrData: string[] = selectUser.slice(); // * copy arr
@@ -99,6 +101,9 @@ function OneToMany({onBack, onConfirm}: IProps) {
       return;
     }
 
+    // * spinner
+    setIsLoading(true);
+
     const result: string[] = [];
     const secondArrData: string[] = firstArr.slice();
 
@@ -109,7 +114,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
       });
 
       // * escape
-      if (secondArrData.length === 0) {
+      if (secondArrData.length === 0 || findData === undefined) {
         break;
       }
 

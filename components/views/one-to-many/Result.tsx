@@ -8,9 +8,11 @@ import {FaHeart} from 'react-icons/fa';
 import {FaSearch} from 'react-icons/fa';
 import {FaCamera} from 'react-icons/fa';
 import {FaPortrait} from 'react-icons/fa';
+import {useSetRecoilState} from 'recoil';
 import CommonImages from 'assets/images/CommonImages';
-import {getUniqueKey} from 'components/utils/StringUtils';
 import resultHeart from 'assets/images/result_heart.png';
+import {loadingSpinnerState} from 'data/LoadingSpinner';
+import {getUniqueKey} from 'components/utils/StringUtils';
 
 interface IProps {
   userList: string[];
@@ -21,6 +23,7 @@ interface IProps {
 
 function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
   const [resultList, setResultList] = useState([]);
+  const setIsLoading = useSetRecoilState(loadingSpinnerState);
 
   useEffect(() => {
     // * shuffled data
@@ -33,6 +36,12 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
       const findData = shuffledList.find((user: string) => {
         return user !== firstArr[j] && user !== secondArr[j];
       });
+
+      // * escape
+      if (shuffledList.length === 0) {
+        break;
+      }
+
       if (findData) {
         const obj: any = {};
         const findIndex = shuffledList.indexOf(findData);
@@ -44,6 +53,7 @@ function Result({userList, firstArr, secondArr, onConfirm}: IProps) {
     }
 
     setResultList(resultArr);
+    setIsLoading(false);
   }, [userList]);
 
   const onClickConfirm = (): void => {
