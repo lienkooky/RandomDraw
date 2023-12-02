@@ -1,7 +1,10 @@
 import type {Metadata} from 'next';
 import 'assets/styles/reset.scss';
+import 'assets/styles/index.scss';
+import 'assets/styles/media.scss';
 import {PropsWithChildren} from 'react';
 import StyledJsxRegistry from 'app/registry';
+import Header from 'components/layouts/Header';
 import Spinner from 'components/spinner/Spinner';
 import AlertModal from 'components/modal/AlertModal';
 import RecoilProvider from 'data/RecoilProvider/RecoilProvider';
@@ -19,6 +22,7 @@ export default function RootLayout({children}: PropsWithChildren) {
       <RecoilProvider>
         <body suppressHydrationWarning={true}>
           <Spinner />
+          <Header />
           <StyledJsxRegistry>{children}</StyledJsxRegistry>
           <AlertModal />
         </body>

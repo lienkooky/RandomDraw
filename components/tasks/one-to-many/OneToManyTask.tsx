@@ -2,7 +2,6 @@
 
 import React, {useState} from 'react';
 import {useRouter} from 'next/navigation';
-import Header from 'components/layouts/Header';
 import Result from 'components/views/one-to-many/Result';
 import OneToMany from 'components/views/one-to-many/OneToMany';
 
@@ -28,7 +27,6 @@ function OneToManyTask() {
 
   return (
     <>
-      <Header />
       {step === 0 && (
         <OneToMany
           onConfirm={onConfirmOneToMany}
