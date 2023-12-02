@@ -155,7 +155,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
       </section>
       <section className="oneToMany-second-section">
         <div className="oneToMany-add-name">
-          <span>이름</span>
+          <span>name</span>
           <input type="text" name="newInputName" value={addUser} onChange={onchangeWriteUserName} />
           <button onClick={onClickAddUserName}>추가</button>
         </div>
@@ -189,7 +189,7 @@ function OneToMany({onBack, onConfirm}: IProps) {
                 <img src={CommonImages.get('close')} alt="닫기" />
               </div>
             </article>
-            <article>
+            <article className="oneToMany-card-second-article">
               <Image
                 style={{objectFit: 'cover', width: '100%', height: '100%'}}
                 src={HaryboMain}
