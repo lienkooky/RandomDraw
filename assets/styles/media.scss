@@ -198,15 +198,55 @@
   }
   .oneToMany-result-card {
     box-sizing: border-box;
-    max-width: 300px;
-    min-width: 300px;
+    max-width: 288px;
+    min-width: 288px;
     margin: 0 auto;
+    height: auto;
+    > .oneToMany-result-card-first-article {
+      height: 50px;
+      > span {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+      }
+      > p {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: 25px;
+      }
+    }
+    > .oneToMany-result-card-second-article {
+      height: 300px;
+      > .oneToMany-result-card-second-user {
+        > span {
+          font-size: 20px;
+          left: 35px;
+        }
+        > img {
+          width: 130px;
+          height: 130px;
+        }
+      }
+    }
+    > .oneToMany-result-card-third-article {
+      height: 50px;
+      > svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .oneToMany-result-card-third-article {
+    font-size: 20px;
   }
   .oneToMany-result-third-section {
-    width: 300px;
+    width: 100%;
     padding: 0;
     margin: 0 auto;
-    > span {
+    > button {
+      margin: 0 20px;
+      width: inherit;
+      padding: 10px 20px;
       font-size: 20px;
     }
   }
