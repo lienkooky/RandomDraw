@@ -1,4 +1,4 @@
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 375px) {
   /* header */
   .header {
     padding: 10px;
@@ -19,6 +19,17 @@
     > button {
       padding: 15px 45px;
       font-size: 30px;
+    }
+  }
+
+  /* spinner */
+  .spinner {
+    > h3 {
+      font-size: 20px;
+    }
+    > img {
+      width: 100px;
+      height: 100px;
     }
   }
 
@@ -56,6 +67,7 @@
       min-width: 200px;
       max-width: 200px;
       margin: 0;
+      font-size: 20px;
     }
     > button {
       margin: 0;
@@ -248,6 +260,539 @@
       width: inherit;
       padding: 10px 20px;
       font-size: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 375px) {
+  /* header */
+  .header {
+    padding: 10px;
+  }
+  .mainNav {
+    display: none;
+  }
+
+  /* home */
+  .home-first-section {
+    > h1 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+    > p {
+      font-size: 20px;
+    }
+    > button {
+      padding: 15px 45px;
+      font-size: 30px;
+    }
+  }
+
+  /* spinner */
+  .spinner {
+    > h3 {
+      font-size: 20px;
+    }
+    > img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  /* oneToMany */
+  .oneToMany-first-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    gap: 18px;
+    height: 200px;
+    > p {
+      font-size: 16px;
+    }
+  }
+  .oneToMany-second-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .oneToMany-add-name {
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+
+    > span {
+      font-size: 10px;
+      padding: 8px;
+      top: -18px;
+    }
+    > input {
+      min-width: 200px;
+      max-width: 200px;
+      margin: 0;
+      font-size: 20px;
+    }
+    > button {
+      margin: 0;
+      min-width: 50px;
+      font-size: 10px;
+      padding: 6px 0;
+      color: #fff;
+      background-color: #2f4858;
+    }
+  }
+  .oneToMany-select-name {
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    > span {
+      font-size: 10px;
+      padding: 8px;
+      top: -18px;
+    }
+    > button {
+      padding: 5px 10px;
+      font-size: 15px;
+    }
+  }
+  .oneToMany-third-section {
+    width: 300px;
+    padding: 0;
+    margin: 0 auto;
+    > span {
+      font-size: 20px;
+    }
+  }
+  .oneToMany-cards-wrap {
+    width: 300px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .oneToMany-card {
+    max-width: 300px;
+    min-width: 300px;
+  }
+  .oneToMany-card-first-article {
+    height: 50px;
+    > span {
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+    }
+    > p {
+      margin-top: 5px;
+      margin-left: 10px;
+      font-size: 25px;
+    }
+    .oneToMany-card-image {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      > img {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  .oneToMany-card-second-article {
+    height: 300px;
+  }
+  .oneToMany-card-third-article {
+    height: 50px;
+    > svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .oneToMany-fourth-section {
+    width: 300px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    > button {
+      padding: 10px 20px;
+      font-size: 20px;
+    }
+  }
+
+  /* Modal */
+  .modalWrap {
+    width: 250px;
+    height: 200px;
+    margin: 0 auto;
+    font-size: 20px;
+    > p {
+      top: 40%;
+    }
+    > button {
+      padding: 10px;
+      font-size: 20px;
+      background-color: #201e33;
+      color: #fff;
+    }
+  }
+
+  /* oneToManyResult */
+  .oneToMany-result-first-section {
+    > .oneToMany-result-first-title {
+      font-size: 30px;
+      margin: 0 auto;
+    }
+  }
+  .oneToMany-result-matching-result {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  .oneToMany-result-second-section {
+    width: 350px;
+    margin: 0 auto;
+    padding: 0;
+    > .oneToMany-result-matching-result {
+      width: 350px;
+      margin: 0 auto;
+      > span {
+        font-size: 15px;
+        padding: 8px;
+        top: -18px;
+      }
+    }
+  }
+  .oneToMany-result-cards-wrap {
+    width: 350px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .oneToMany-result-card {
+    box-sizing: border-box;
+    max-width: 288px;
+    min-width: 288px;
+    margin: 0 auto;
+    height: auto;
+    > .oneToMany-result-card-first-article {
+      height: 50px;
+      > span {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+      }
+      > p {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: 25px;
+      }
+    }
+    > .oneToMany-result-card-second-article {
+      height: 300px;
+      > .oneToMany-result-card-second-user {
+        > span {
+          font-size: 20px;
+          left: 35px;
+        }
+        > img {
+          width: 130px;
+          height: 130px;
+        }
+      }
+    }
+    > .oneToMany-result-card-third-article {
+      height: 50px;
+      > svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .oneToMany-result-card-third-article {
+    font-size: 20px;
+  }
+  .oneToMany-result-third-section {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    > button {
+      margin: 0 20px;
+      width: inherit;
+      padding: 10px 20px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* header */
+  .header {
+    padding: 10px;
+  }
+  .mainNav {
+    display: flex;
+    > span {
+      font-size: 28px;
+    }
+  }
+  /* home */
+  .home-first-section {
+    > h1 {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+    > p {
+      font-size: 30px;
+    }
+    > button {
+      padding: 20px 50px;
+      font-size: 40px;
+    }
+  }
+
+  /* spinner */
+  .spinner {
+    > h3 {
+      font-size: 30px;
+    }
+    > img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  /* oneToMany */
+  .oneToMany-first-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    gap: 18px;
+    height: 300px;
+    > p {
+      font-size: 25px;
+    }
+  }
+  .oneToMany-second-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .oneToMany-add-name {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    > span {
+      font-size: 13px;
+      padding: 9px;
+      top: -18px;
+    }
+    > input {
+      min-width: 350px;
+      max-width: 350px;
+      margin: 0;
+      font-size: 17px;
+      padding: 3px;
+    }
+    > button {
+      margin: 0;
+      min-width: 80px;
+      font-size: 15px;
+      padding: 3px;
+      color: #fff;
+      background-color: #2f4858;
+    }
+  }
+  .oneToMany-select-name {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    > span {
+      font-size: 13px;
+      padding: 9px;
+      top: -18px;
+    }
+    > button {
+      padding: 5px 10px;
+      font-size: 15px;
+    }
+  }
+  .oneToMany-third-section {
+    width: 500px;
+    padding: 0;
+    margin: 0 auto;
+    > span {
+      font-size: 25px;
+    }
+  }
+  .oneToMany-cards-wrap {
+    width: 500px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .oneToMany-card {
+    max-width: 240px;
+    min-width: 240px;
+  }
+  .oneToMany-card-first-article {
+    height: 50px;
+    > span {
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+    }
+    > p {
+      margin-top: 5px;
+      margin-left: 10px;
+      font-size: 25px;
+    }
+    .oneToMany-card-image {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      > img {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  .oneToMany-card-second-article {
+    height: 300px;
+  }
+  .oneToMany-card-third-article {
+    height: 50px;
+    > svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .oneToMany-fourth-section {
+    width: 500px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    > button {
+      padding: 15px 30px;
+      font-size: 23px;
+    }
+  }
+
+  /* Modal */
+  .modalWrap {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto;
+    font-size: 23px;
+    > p {
+      top: 40%;
+    }
+    > button {
+      padding: 13px;
+      font-size: 23px;
+      background-color: #201e33;
+      color: #fff;
+    }
+  }
+
+  /* oneToManyResult */
+  .oneToMany-result-first-section {
+    width: 500px;
+    padding: 0;
+    > .oneToMany-result-first-title {
+      font-size: 40px;
+      margin: 0 auto;
+    }
+  }
+  .oneToMany-result-second-section {
+    width: 500px;
+    margin: 0 auto;
+    padding: 0;
+    > .oneToMany-result-matching-result {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px 0;
+      > span {
+        font-size: 17px;
+        padding: 9px;
+        top: -19px;
+      }
+    }
+  }
+  .oneToMany-result-cards-wrap {
+    width: 500px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .oneToMany-result-card {
+    box-sizing: border-box;
+    max-width: 230px;
+    min-width: 230px;
+    margin: 0 auto;
+    height: auto;
+    > .oneToMany-result-card-first-article {
+      height: 50px;
+      > span {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+      }
+      > p {
+        margin-top: 5px;
+        margin-left: 10px;
+        font-size: 25px;
+      }
+    }
+    > .oneToMany-result-card-second-article {
+      height: 300px;
+      > .oneToMany-result-card-second-user {
+        > span {
+          font-size: 20px;
+          top: 35px;
+          left: 20px;
+        }
+        > img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+    > .oneToMany-result-card-third-article {
+      height: 50px;
+      font-size: 20px;
+      > svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .oneToMany-result-third-section {
+    width: 500px;
+    padding: 0;
+    margin: 0 auto;
+    > button {
+      margin: 0;
+      padding: 10px 20px;
+      font-size: 23px;
     }
   }
 }
